@@ -2,15 +2,26 @@ from flask import Flask, render_template, request, redirect, url_for, session
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
+import os
 
 app = Flask(__name__)
 
+# ========================
 # CONFIGURAÇÕES
+# ========================
+
 app.config['SECRET_KEY'] = 'chave_super_secreta'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://edu:24102008@localhost/loja3d'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
+# Se estiver rodando no Render -> usa SQLite
+if os.environ.get("RENDER") == "1":
+    app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///database.db"
+else:
+    # Seu MySQL local
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://edu:24102008@localhost/loja3d'
+
 db = SQLAlchemy(app)
+
 
 # ========================
 # MODELOS
@@ -114,7 +125,8 @@ def logout():
 with app.app_context():
     db.create_all()
 
-print("Banco MySQL conectado e tabelas criadas!")
+print("Banco configurado e tabelas criadas!")
+
 
 if __name__ == "__main__":
     app.run(debug=True)

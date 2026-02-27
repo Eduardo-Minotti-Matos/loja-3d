@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loja 3D</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo-area">
+            <a href="{{ url_for('index') }}">
+                <img src="{{ url_for('static', filename='Logo3d.jpeg') }}" alt="Logo da empresa" class="logo">
+            </a>
+            <h2>Descomplica 3D</h2>
+        </div>
+
+        <nav>
+            <ul class="menu">
+                <li><a href="{{ url_for('index') }}">Início</a></li>
+                <li><a href="#">Produtos</a></li>
+                <li><a href="#">Contato</a></li>
+            </ul>
+        </nav>
+
+        {% if session.usuario_nome %}
+            <div class="usuario-logado">
+                <span>Bem-vindo, {{ session.usuario_nome }}</span>
+                <a href="{{ url_for('logout') }}" class="btn-login">Sair</a>
+            </div>
+        {% else %}
+            <a href="{{ url_for('login') }}" class="btn-login">Login</a>
+            <a href="{{ url_for('cadastro') }}" class="btn-login">Cadastrar</a>
+        {% endif %}
+    </header>
+
+    <section class="produtos">
+        <h2>Produtos em Destaque</h2>
+
+        <div class="cards">
+
+            <div class="card">
+                <img src="{{ url_for('static', filename='d6be028fba49baac9625706fe534d848.jpg') }}" alt="Produto">
+                <h3>Filamento PLA</h3>
+                <p>R$ 89,90</p>
+                <button>Comprar</button>
+            </div>
+            <div class="card">
+                <img src="{{ url_for('static', filename='aaaa.jpeg') }}" alt="Produto">
+                <h3>Filamento PLA</h3>
+                <p>R$ 89,90</p>
+                <button>Comprar</button>
+            </div>
+            <div class="card">
+                <img src="{{ url_for('static', filename='imageeees.jpeg') }}" alt="Produto">
+                <h3>Filamento PLA</h3>
+                <p>R$ 89,90</p>
+                <button>Comprar</button>
+            </div>
+            <div class="card">
+                <img src="{{ url_for('static', filename='imageees.jpeg') }}" alt="Produto">
+                <h3>Filamento PLA</h3>
+                <p>R$ 89,90</p>
+                <button>Comprar</button>
+            </div>
+            <div class="card">
+                <img src="{{ url_for('static', filename='imagees.jpeg') }}" alt="Produto">
+                <h3>Filamento PLA</h3>
+                <p>R$ 89,90</p>
+                <button>Comprar</button>
+            </div>
+            <div class="card">
+                <img src="{{ url_for('static', filename='images.jpeg') }}" alt="Produto">
+                <h3>Filamento PLA</h3>
+                <p>R$ 89,90</p>
+                <button>Comprar</button>
+            </div>
+            <div class="card">
+                <img src="{{ url_for('static', filename='michael.jpeg') }}" alt="Produto">
+                <h3>Filamento PLA</h3>
+                <p>R$ 89,90</p>
+                <button>Comprar</button>
+            </div>
+            <div class="card">
+                <img src="{{ url_for('static', filename='produtos-impressos-em-3d.jpg') }}" alt="Produto">
+                <h3>Filamento PLA</h3>
+                <p>R$ 89,90</p>
+                <button>Comprar</button>
+            </div>
+            <div class="card">
+                <img src="{{ url_for('static', filename='porco.jpeg') }}" alt="Produto">
+                <h3>Filamento PLA</h3>
+                <p>R$ 89,90</p>
+                <button>Comprar</button>
+            </div>
+
+        </div>
+    </section>
+
+</body>
+</html>
